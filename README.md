@@ -22,7 +22,7 @@ Este repositorio no solo organiza archivos; inyecta un **"Cerebro Operativo"** e
 
 1.  **Clona este repositorio** en tu carpeta de configuraciones preferida (ej. `~/agents-init`):
     ```bash
-    git clone [https://github.com/devlcp/agents-init.git](https://github.com/devlcp/agents-init.git) ~/agents-init
+    git clone https://github.com/devlcp/agents-init.git ~/agents-init
     ```
 
 2.  **Instala el script de inicialización** en tu PATH:
@@ -67,3 +67,21 @@ La IA leerá el archivo `setup.md` y comenzará una entrevista técnica paso a p
 * Definirá el propósito exacto del proyecto.
 * Configurará los validadores (Linters) y el entorno de ejecución.
 * Ajustará los parámetros de acuerdo a tus necesidades específicas.
+
+### 4. Autodestrucción y Limpieza
+Al finalizar la configuración, la IA:
+1.  Completará el archivo `AGENTS.md` con la información técnica real.
+2.  **Eliminará la skill de setup** automáticamente para mantener el repositorio limpio de herramientas de andamiaje.
+3.  Te entregará un entorno listo para desarrollar bajo estándares de nivel Senior.
+
+---
+
+## 📜 Reglas de Oro
+* **Atomicidad:** Cada cambio sugerido por la IA debe ser un commit independiente.
+* **Modularidad:** Si una funcionalidad crece, se encapsula como una **Skill** en `.agents/skills/`.
+* **Contexto Sagrado:** El archivo `AGENTS.md` es la ley. La IA debe priorizar este archivo sobre su entrenamiento general.
+
+---
+
+### Contribución y Nuevos Stacks
+Para añadir un nuevo stack, copia la carpeta `.agents` de `base-shell` a una nueva carpeta de lenguaje y personaliza las reglas técnicas. ¡Mantén el sistema evolucionando!
