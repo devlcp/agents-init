@@ -28,7 +28,7 @@ Este repositorio no solo organiza archivos; inyecta un **"Cerebro Operativo"** e
 2.  **Instala el script de inicialización** en tu PATH:
     ```bash
     # Crea un enlace simbólico para acceso global
-    sudo ln -s ~/agents-init/agents-init.sh /usr/local/bin/kore-init (o ~/.local/bin/agents-init para instalación sin sudo)
+    sudo ln -s ~/agents-init/agents-init.sh /usr/local/bin/agents-init (o ~/.local/bin/agents-init para instalación sin sudo)
     chmod +x /usr/local/bin/agents-init
     ```
 
