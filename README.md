@@ -23,12 +23,12 @@ Este repositorio no solo organiza archivos; inyecta un **"Cerebro Operativo"** e
 1.  **Clona este repositorio** en tu carpeta de configuraciones preferida (ej. `~/agents-init`):
     ```bash
     git clone https://github.com/devlcp/agents-init.git ~/agents-init
+
+    cd ~/agents-init/
     ```
 
-2.  **Instala el script de inicialización** en tu PATH:
+2.  **Dale Permisos al script**:
     ```bash
-    # Crea un enlace simbólico para acceso global
-    sudo ln -s ~/agents-init/agents-init.sh /usr/local/bin/agents-init (o ~/.local/bin/agents-init para instalación sin sudo)
     chmod +x /usr/local/bin/agents-init
     ```
 
@@ -40,13 +40,13 @@ Para iniciar un nuevo proyecto (ej. un microservicio en Go):
 
 1.  **Ejecuta el comando:**
     ```bash
-    agents-init mi-proyecto-go go
+    agents-init project-path [neovim|go|java|base]
     ```
-    *Esto creará la carpeta `mi-proyecto-go/` e inyectará la carpeta `.agents/` configurada específicamente para Go.*
+    *Esto hara que inyecte la carpeta `.agents/` configurada específicamente para el lenguaje o tipo de proyecto que elegiste.*
 
-2.  **Entra a tu proyecto:**
+2.  **Entra a tu proyecto:** y ahi estara la carpeta `.agents/`
     ```bash
-    cd mi-proyecto-go
+    cd project-path
     ```
 
 ---
@@ -84,4 +84,4 @@ Al finalizar la configuración, la IA:
 ---
 
 ### Contribución y Nuevos Stacks
-Para añadir un nuevo stack, copia la carpeta `.agents` de `base-shell` a una nueva carpeta de lenguaje y personaliza las reglas técnicas. ¡Mantén el sistema evolucionando!
+Para añadir un nuevo stack, copia la carpeta `.agents` de `base` a una nueva carpeta de lenguaje y personaliza las reglas técnicas. ¡Mantén el sistema evolucionando!
