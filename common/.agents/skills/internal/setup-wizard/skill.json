@@ -1,0 +1,11 @@
+{
+  "name": "Project_Bootstrapper",
+  "version": "1.1.0",
+  "description": "Orquestador de configuración inicial. Se autodestruye tras el éxito.",
+  "specification": "./setup.md",
+  "status": "ephemeral",
+  "scope": {
+    "target": "../../AGENTS.md",
+    "permissions": ["read", "write", "delete"]
+  }
+}
