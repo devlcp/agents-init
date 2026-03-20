@@ -4,7 +4,7 @@
 ## 🛠️ Strategic Execution Loop (Mandatory)
 1. **Inventory:** Check index below.
 2. **Analyze:** Security, Edge-cases, KISS trade-offs.
-3. **Draft:** OpenCode pattern (Analyze > Draft > Refactor > Validate).
+3. **Draft:** ADRV pattern (Analyze > Draft > Refactor > Validate).
 4. **Audit:** Self-audit against AGENTS.md before output.
 
 ## 🧩 Skills Inventory (Context Map)

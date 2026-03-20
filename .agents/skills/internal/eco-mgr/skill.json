@@ -1,0 +1,12 @@
+{
+  "id": "ECO_MGR",
+  "v": "2.1",
+  "name": "Ecosystem Master",
+  "perms": ["fs_all"],
+  "metadata": {
+    "scope": "internal",
+    "optimization": "lazy-loading",
+    "roles": ["factory", "auditor", "indexer"]
+  },
+  "spec": "./logic.md"
+}
