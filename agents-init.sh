@@ -1,18 +1,23 @@
 #!/bin/bash
 
 # Configuration
-TEMPLATES_ROOT="$HOME/.config/agents-init"
+TEMPLATES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-PROJECT_PATH=$1
-CATEGORY=$2 # backend, frontend, enterprise, system-tools, custom
-
-if [ -z "$PROJECT_PATH" ] || [ -z "$CATEGORY" ]; then
-  echo -e "${YELLOW}Usage: agents-init <project_path> <category>${NC}"
-  exit 1
+if [ $# -eq 1 ]; then
+	# Default to current directory if only category is provided
+	PROJECT_PATH="."
+	CATEGORY=$1
+elif [ $# -eq 2 ]; then
+	PROJECT_PATH=$1
+	CATEGORY=$2
+else
+	echo -e "${YELLOW}Usage: agents-init [project_path] <category>${NC}"
+	echo -e "Available Categories: backend, frontend, enterprise, system-tools, custom"
+	exit 1
 fi
 
 # 1. Prepare Path
@@ -29,22 +34,22 @@ MASTER_QUESTIONS="$TEMPLATES_ROOT/master_questions.md"
 SETUP_WIZARD_MD="$ABS_PATH/.agents/skills/internal/setup-wizard/setup.md"
 
 if [ -f "$MASTER_QUESTIONS" ]; then
-  # Capitalize category for matching (e.g., backend -> Backend)
-  CAT_SEARCH=$(echo "$CATEGORY" | sed 's/./\U&/')
+	# Capitalize category for matching (e.g., backend -> Backend)
+	CAT_SEARCH=$(echo "$CATEGORY" | sed 's/./\U&/')
 
-  echo -e "${BLUE}🔍 Extracting Mentor Questions for: $CAT_SEARCH...${NC}"
+	echo -e "${BLUE}🔍 Extracting Mentor Questions for: $CAT_SEARCH...${NC}"
 
-  # Extract specific section cleanly
-  sed -n "/^## $CAT_SEARCH/,/^##/p" "$MASTER_QUESTIONS" | grep -v "^##" | sed '/^[[:space:]]*$/d' >temp_q.md
+	# Extract specific section cleanly
+	sed -n "/^## $CAT_SEARCH/,/^##/p" "$MASTER_QUESTIONS" | grep -v "^##" | sed '/^[[:space:]]*$/d' >temp_q.md
 
-  if [ -s temp_q.md ]; then
-    # Inject into the setup skill
-    sed -i "/### 2. Stack Specifics/r temp_q.md" "$SETUP_WIZARD_MD"
-    echo -e "${GREEN}✅ Questions for $CAT_SEARCH injected into Setup Wizard.${NC}"
-  else
-    echo -e "${YELLOW}⚠️  No specific questions found for category '$CATEGORY'.${NC}"
-  fi
-  rm temp_q.md
+	if [ -s temp_q.md ]; then
+		# Inject into the setup skill
+		sed -i "/### 2. Stack Specifics/r temp_q.md" "$SETUP_WIZARD_MD"
+		echo -e "${GREEN}✅ Questions for $CAT_SEARCH injected into Setup Wizard.${NC}"
+	else
+		echo -e "${YELLOW}⚠️  No specific questions found for category '$CATEGORY'.${NC}"
+	fi
+	rm temp_q.md
 fi
 
 # 4. Personalize AGENTS.md

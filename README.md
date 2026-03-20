@@ -32,9 +32,14 @@ Este ecosistema permite generar código de alta precisión en cualquier lenguaje
 ## 🚀 Flujo de Trabajo
 
 ### 1. Inicialización del Proyecto
-Ejecuta el script indicando la ruta del proyecto y la categoría de arquitectura:
+Ejecuta el script indicando la categoría de arquitectura (opcionalmente la ruta):
 ```bash
-# Uso: agents-init <PROJECT_PATH> <CATEGORY>
+# Uso: agents-init [PROJECT_PATH] <CATEGORY>
 # Categorías: backend, frontend, enterprise, system-tools, custom
 
+# En la carpeta actual:
+agents-init backend
+
+# En una ruta específica:
 agents-init ./mi-proyecto backend
+```
