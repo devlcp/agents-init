@@ -16,6 +16,17 @@ Este ecosistema permite generar código de alta precisión en cualquier lenguaje
 
 ---
 
+## 🧠 ¿Por qué agents-init?
+
+A diferencia de otros generadores de código, `agents-init` no solo crea archivos; **crea una estructura de pensamiento** para tu IA:
+
+1.  **Elimina Alucinaciones:** Al "groundear" al modelo en un sistema de gobernanza (`AGENTS.md`), la IA deja de inventar APIs y se ciñe a tus estándares reales.
+2.  **Ahorro de Tokens (Costo y Velocidad):** Mediante la arquitectura **Lazy-Loading**, solo se inyecta el contexto necesario para la tarea actual.
+3.  **Calidad de Nivel Senior:** Forzamos a modelos como Ollama o Gemini a actuar como arquitectos mediante el ciclo **ADRV**, garantizando código refactorizado y validado.
+4.  **Independencia del Stack:** Funciona igual de bien para un microservicio en Go que para un plugin de Neovim o una app en Astro.
+
+---
+
 ## 🛠️ Instalación
 
 1.  **Clona el repositorio** en tu carpeta de configuraciones:
