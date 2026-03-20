@@ -10,6 +10,7 @@
 ## 🧩 Skills Inventory (Context Map)
 - **ECO_MGR**: [.agents/skills/internal/eco-mgr] - Factory, Auditor & Indexer.
 - **SETUP_WIZARD**: [.agents/skills/internal/setup-wizard] - Project Bootstrapper (Ephemeral).
+- **GIT_FLOW**: [.agents/skills/tools/git-flow] - Git workflow and commit optimizer.
 ## 📜 Global Rules
 - **English Only:** All technical interactions and skills.
 - **No Yapping:** Be direct. Code > Explanations.

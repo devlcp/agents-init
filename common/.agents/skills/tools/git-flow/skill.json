@@ -1,0 +1,16 @@
+{
+  "name": "Git_Flow_Optimizer",
+  "version": "1.0.0",
+  "description": "Optimizes the commit and push process following ADRV and Conventional Commits standards.",
+  "status": "active",
+  "metadata": {
+    "scope": ["tools", "git"],
+    "tags": ["git", "workflow", "automation"]
+  },
+  "scope": {
+    "target_dir": "./",
+    "allowed_extensions": ["*"]
+  },
+  "permissions": ["read", "write", "bash"],
+  "specification": "./instructions.md"
+}
