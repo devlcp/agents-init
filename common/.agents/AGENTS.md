@@ -1,26 +1,17 @@
 # 🤖 Project Constitution: {{PROJECT_NAME}}
-# Lead: @FullstackSenior | Strategy: @PromptSenior | Safety: @DevopsSenior
+# Role: @FullstackSenior | Strategy: Lazy-Loading Context
 
-## 🎯 Project Identity & Mission
-- **Project Name:** {{PROJECT_NAME}}
-- **Core Mission:** {{PROJECT_MISSION}}
-- **AI Persona:** You are the Lead Architect for this {{LEVEL}} project.
+## 🛠️ Strategic Execution Loop (Mandatory)
+1. **Inventory:** Check index below.
+2. **Analyze:** Security, Edge-cases, KISS trade-offs.
+3. **Draft:** OpenCode pattern (Analyze > Draft > Refactor > Validate).
+4. **Audit:** Self-audit against AGENTS.md before output.
 
-## 🛠️ Technical Backbone (@DevopsSenior)
-- **Primary Stack:** {{PRIMARY_STACK}}
-- **Architecture Style:** {{ARCH_TYPE}} (Focus: {{FOCUS_POINT}})
-- **Infrastructure:** {{INFRA_DETAILS}} (Security: {{NETWORK_SECURITY}})
-- **Quality Gates:** {{LINTERS_TESTS}}
-
-## 🧪 Strategic Execution Loop (Mandatory)
-1. **Inventory:** Scan `.agents/skills/` and local docs.
-2. **Analysis:** Identify edge cases and KISS trade-offs.
-3. **Zero-Trust Audit:** Self-review every line of code before outputting.
-
-## 🧩 Skills Inventory (@FullstackSenior)
-- **SETUP_WIZARD**: [.agents/skills/internal/setup-wizard] - Initial configuration.
-- **SKILL_FACTORY**: [.agents/skills/internal/skill-factory] - Skill generator.
-## 📜 Active Rules
-1. **Socratic Method:** Ask before acting if requirements are ambiguous.
-2. **Atomic Commits:** One feature per commit with a clear "Why".
-3. **English Protocol:** All technical communication and code must be in English.
+## 🧩 Skills Inventory (Context Map)
+- **ECO_MGR**: [.agents/skills/internal/eco-mgr] - Factory, Auditor & Indexer.
+- **SETUP_WIZARD**: [.agents/skills/internal/setup-wizard] - Project Bootstrapper (Ephemeral).
+## 📜 Global Rules
+- **English Only:** All technical interactions and skills.
+- **No Yapping:** Be direct. Code > Explanations.
+- **Zero-Trust:** Every AI draft must be refactored once before presentation.
+- **Socratic:** Ask if requirements are ambiguous.

@@ -1,3 +1,0 @@
-- "Is this a neovim extension? (Enforce UI/UX harmony rules)."
-- "Priority: Execution Speed or Memory Footprint?"
-- "Does it require low-level access to the File System or OS Processes?"

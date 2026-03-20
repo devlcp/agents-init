@@ -1,10 +1,21 @@
-# 🛠️ Skill: Project_Bootstrapper (v2.0)
+# 🛠️ Skill: Project_Bootstrapper (Mentor Edition)
+
+## 🎯 Protocol
+1. **Language Check:** "In which language do you want to conduct this setup? (En/Es/etc.)".
+2. **Seniority Level:** "What is your experience level? (Junior/Mid/Senior)".
+   - *If Junior:* Always include the "Hints" and "Context" from the questions.
+   - *If Senior:* Go straight to technical choices to save tokens.
+3. **Drafting:** Generate the AGENTS.md in ENGLISH regardless of the interview language.
 
 ## 🎯 Purpose
 To initialize the project by interviewing the user, defining the technical backbone, and establishing the **Strategic Execution Loop** based on the chosen stack.
 
 ## 📝 The Interview Protocol (@FullstackSenior)
 *Ask these questions one by one. Do not proceed to the next until the current one is answered:*
+
+### 0. Translate questions
+"Which language do you want me to ask you questions in?"
+*Note: You should translate all of your questions into that language:*
 
 ### 1. The Core Mission
 "What is the official name of this project and the specific problem it solves? (Define Mission and Persona)."
