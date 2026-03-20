@@ -33,9 +33,16 @@ A diferencia de otros generadores de código, `agents-init` no solo crea archivo
     ```bash
     git clone https://github.com/devlcp/agents-init.git ~/.config/agents-init
     ```
-2.  **Crea el alias** en tu `.bashrc` o `.zshrc`:
+2.  **Crea el alias** según tu shell:
+
+    **Bash / Zsh:**
     ```bash
     alias agents-init='~/.config/agents-init/agents-init.sh'
+    ```
+
+    **Fish:**
+    ```fish
+    alias agents-init='~/.config/agents-init/agents-init.sh' && funcsave agents-init
     ```
 
 ---
