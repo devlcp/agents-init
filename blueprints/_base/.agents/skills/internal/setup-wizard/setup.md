@@ -34,10 +34,10 @@ To initialize the project by interviewing the user, defining the technical backb
 ## 🚀 Execution Phase (Post-Interview)
 Once all data is gathered, perform these atomic actions:
 
-1. **Inject Configuration:** Replace all `{{PLACEHOLDERS}}` in `../../AGENTS.md` with the user's answers.
-2. **Setup the Execution Loop:** Activate the `Inventory -> Analysis -> Zero-Trust` loop.
-3. **Skill Indexing:** Verify the `## 🧩 Skills Inventory` and ensure `SKILL_FACTORY` is ready.
-4. **Final Audit:** Read the finalized `AGENTS.md` to ensure it follows the quality standards.
+1. **Analyze (A):** Replace all `{{PLACEHOLDERS}}` in `../../AGENTS.md` with the user's answers.
+2. **Draft (D):** Setup the Strategic Execution Loop and verify current directory context.
+3. **Refactor (R):** Populate the `## 🧩 Skills Inventory` and ensure `ECO_MGR` is indexed.
+4. **Validate (V):** Read the finalized `AGENTS.md` to ensure zero-contradictions and absolute clarity.
 
 ## 🧨 Self-Destruction
 1. **Cleanup:** Delete the `.agents/skills/internal/setup-wizard/` directory.

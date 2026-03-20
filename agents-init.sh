@@ -7,6 +7,13 @@ BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
+# Compatibility check for sed -i
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	SED_I="sed -i ''"
+else
+	SED_I="sed -i"
+fi
+
 if [ $# -eq 1 ]; then
 	# Default to current directory if only category is provided
 	PROJECT_PATH="."
@@ -20,16 +27,32 @@ else
 	exit 1
 fi
 
-# 1. Prepare Path
+# 1. Prepare Path & Idempotency Check
+if [ -d "$PROJECT_PATH/.agents" ]; then
+	echo -e "${YELLOW}⚠️  Ecosystem .agents already exists in: $PROJECT_PATH${NC}"
+	read -rp "Overwrite it? (y/n): " CHOICE
+	if [[ "$CHOICE" != "y" ]]; then
+		echo "❌ Aborted."
+		exit 1
+	fi
+fi
+
 mkdir -p "$PROJECT_PATH"
-ABS_PATH=$(realpath "$PROJECT_PATH")
+# Portable way to get absolute path
+ABS_PATH="$(cd "$PROJECT_PATH" && pwd)"
 
-# 2. Inject .agents ecosystem
-echo -e "${BLUE}🏗️  Injecting .agents ecosystem into: $ABS_PATH...${NC}"
-# Assumes base-template exists in your agents-init repo
-cp -r "$TEMPLATES_ROOT/common/.agents" "$ABS_PATH/"
+# 2. Inject Base .agents ecosystem
+echo -e "${BLUE}🏗️  Injecting base ecosystem into: $ABS_PATH...${NC}"
+cp -r "$TEMPLATES_ROOT/blueprints/_base/.agents" "$ABS_PATH/"
 
-# 3. Dynamic Extraction from master_questions.md
+# 3. Inject Stack Blueprint (Overlay)
+BLUEPRINT_PATH="$TEMPLATES_ROOT/blueprints/$CATEGORY"
+if [ -d "$BLUEPRINT_PATH/.agents" ]; then
+	echo -e "${BLUE}📁 Applying $CATEGORY blueprint...${NC}"
+	cp -r "$BLUEPRINT_PATH/.agents" "$ABS_PATH/"
+fi
+
+# 4. Dynamic Extraction from master_questions.md
 MASTER_QUESTIONS="$TEMPLATES_ROOT/master_questions.md"
 SETUP_WIZARD_MD="$ABS_PATH/.agents/skills/internal/setup-wizard/setup.md"
 
@@ -44,7 +67,7 @@ if [ -f "$MASTER_QUESTIONS" ]; then
 
 	if [ -s temp_q.md ]; then
 		# Inject into the setup skill
-		sed -i "/### 2. Stack Specifics/r temp_q.md" "$SETUP_WIZARD_MD"
+		$SED_I "/### 2. Stack Specifics/r temp_q.md" "$SETUP_WIZARD_MD"
 		echo -e "${GREEN}✅ Questions for $CAT_SEARCH injected into Setup Wizard.${NC}"
 	else
 		echo -e "${YELLOW}⚠️  No specific questions found for category '$CATEGORY'.${NC}"
@@ -52,8 +75,8 @@ if [ -f "$MASTER_QUESTIONS" ]; then
 	rm temp_q.md
 fi
 
-# 4. Personalize AGENTS.md
+# 5. Personalize AGENTS.md
 PROJECT_NAME=$(basename "$ABS_PATH")
-sed -i "s/{{PROJECT_NAME}}/$PROJECT_NAME/g" "$ABS_PATH/.agents/AGENTS.md"
+$SED_I "s/{{PROJECT_NAME}}/$PROJECT_NAME/g" "$ABS_PATH/.agents/AGENTS.md"
 
 echo -e "${GREEN}🚀 System Ready! Open your AI and use the Activation Protocol.${NC}"
