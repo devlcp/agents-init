@@ -64,8 +64,9 @@ agents-init ./mi-proyecto backend
 agents-init ./mi-proyecto-existente --light
 ```
 
-### 2. Protocolo de Activación
-Para iniciar la configuración del proyecto y activar la gobernanza, dile a tu IA: 
-
-*"Lee el archivo `.agents/skills/internal/setup-wizard/setup.md` y sigue el protocolo definido allí."*
+### 3. Integración con OpenCode (Automática)
+Si utilizas **OpenCode**, `agents-init` inyectará automáticamente un plugin en `.opencode/plugins/agents-governance.ts`. Este plugin:
+1.  Detecta tu estructura `.agents/`.
+2.  Carga automáticamente `AGENTS.md`, `DECISIONS.md` y `STATUS.md` en el contexto del LLM.
+3.  Garantiza que la gobernanza del proyecto esté siempre presente, incluso cuando la sesión de chat se compacta.
 
