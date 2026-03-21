@@ -14,22 +14,14 @@ Automate and standardize the version control process ensuring that every commit 
 
 ### 2. Draft (D)
 - **Branch Creation:** If on `main`, perform `git checkout -b [new_branch_name]`.
-- **Staging:** Stage the necessary files (`git add`).
+- **Staging:** List modified files to the user and request permission before executing `git add <files>`. NEVER use `git add .` automatically.
 - **Commit Message:** Propose a message following the format: `<type>(<scope>): <description>`.
 - Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`.
 
-### 3. Refactor (R)
-- Review the proposed commit message for clarity and conciseness.
-- Ensure it explains the "why" if the change is complex.
-- Validate that the commit complies with the **Zero-Trust** rule (must be refactored once before presentation).
-
-### 4. Validate (V)
-- Execute the commit: `git commit -m "..."`.
-- If requested, prepare for push: `git push origin [branch]`.
-- Report the final status of the working tree.
-
 ## 🚫 Forbidden Patterns
+- **No Global Add:** NEVER use `git add .` without explicit user confirmation. Always list files to be staged.
 - **No Direct Main:** NEVER commit directly to `main` unless it's a minor documentation fix (README.md) or explicitly approved.
+
 - **No Duplicate Branches:** Do not proceed if the branch name is already present on the remote `origin`.
 - **No Yapping in Messages:** Keep commit titles under 50 characters when possible.
 - **No Mega-Commits:** Avoid committing unrelated changes together.
