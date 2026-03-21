@@ -10,9 +10,10 @@ Este ecosistema permite generar código de alta precisión en cualquier lenguaje
 
 * **🏗️ Patrón ADRV:** Obliga a la IA a seguir un ciclo riguroso: **A**nalyze, **D**raft, **R**efactor y **V**alidate.
 * **🎓 Modo Mentor Adaptativo:** El sistema ajusta su lenguaje según tu nivel (Junior a Senior), ofreciendo contextos y ejemplos solo cuando son necesarios.
-* **🌍 Multilingüe (Setup):** Entrevista de configuración en tu idioma preferido (En/Es), manteniendo el repositorio técnico en inglés estandarizado.
+* **🌍 Integración Inteligente:** Detecta tu stack actual mediante **Discovery Phase** y ajusta las reglas de gobernanza automáticamente.
 * **📉 Eficiencia de Contexto:** Utiliza **Lazy-Loading** para que la IA solo cargue las habilidades necesarias para la tarea actual, ahorrando hasta un 60% de tokens.
 * **🛠️ Scaffolding Agnóstico:** Funciona para Backend, Frontend, Enterprise y System-Tools sin importar el stack tecnológico.
+* **🧩 Gobernanza Nativa:** Incluye `AGENTS.md`, `DECISIONS.md` y `STATUS.md` para el registro de decisiones y seguimiento del estado del proyecto.
 
 ---
 
@@ -20,10 +21,10 @@ Este ecosistema permite generar código de alta precisión en cualquier lenguaje
 
 A diferencia de otros generadores de código, `agents-init` no solo crea archivos; **crea una estructura de pensamiento** para tu IA:
 
-1.  **Elimina Alucinaciones:** Al "groundear" al modelo en un sistema de gobernanza (`AGENTS.md`), la IA deja de inventar APIs y se ciñe a tus estándares reales.
-2.  **Ahorro de Tokens (Costo y Velocidad):** Mediante la arquitectura **Lazy-Loading**, solo se inyecta el contexto necesario para la tarea actual.
+1.  **Elimina Alucinaciones:** Al "groundear" al modelo en un sistema de gobernanza, la IA deja de inventar APIs y se ciñe a tus estándares reales.
+2.  **Integración no destructiva:** Usa `--light` para inyectar gobernanza en proyectos existentes sin alterar tu arquitectura.
 3.  **Calidad de Nivel Senior:** Forzamos a modelos como Ollama o Gemini a actuar como arquitectos mediante el ciclo **ADRV**, garantizando código refactorizado y validado.
-4.  **Independencia del Stack:** Funciona igual de bien para un microservicio en Go que para un plugin de Neovim o una app en Astro.
+4.  **Autodocumentación:** Registra automáticamente todas las decisiones arquitectónicas.
 
 ---
 
@@ -50,14 +51,22 @@ A diferencia de otros generadores de código, `agents-init` no solo crea archivo
 ## 🚀 Flujo de Trabajo
 
 ### 1. Inicialización del Proyecto
-Ejecuta el script indicando la categoría de arquitectura (opcionalmente la ruta):
+Ejecuta el script indicando la categoría de arquitectura (opcionalmente la ruta).
+
+**Modo Completo:**
 ```bash
 # Uso: agents-init [PROJECT_PATH] <CATEGORY>
-# Categorías: backend, frontend, enterprise, system-tools, custom
-
-# En la carpeta actual:
-agents-init backend
-
-# En una ruta específica:
 agents-init ./mi-proyecto backend
 ```
+
+**Modo Ligero (Para proyectos existentes):**
+```bash
+agents-init ./mi-proyecto-existente --light
+```
+
+### 2. Protocolo de Activación
+Al inicializar, el `setup-wizard` te guiará mediante:
+1.  **Language Check:** Elige tu idioma para la mentoría.
+2.  **Discovery Phase:** El agente analiza tu estructura y propone mejoras.
+3.  **Refinement:** Ajustes de configuración específicos.
+4.  **Handoff:** El sistema queda listo bajo control del `@FullstackSenior`.
