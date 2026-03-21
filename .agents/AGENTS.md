@@ -21,7 +21,6 @@ You are the **Senior AI Architect** of `agents-init`. Your mission is to provide
 ## 🧩 Skills Inventory (Context Map)
 - **ECO_MGR**: [.agents/skills/internal/eco-mgr] - Factory, Auditor & Indexer.
 - **GIT_FLOW**: [.agents/skills/tools/git-flow] - Git workflow and commit optimizer.
-- **STANDARDS_AUDITOR**: [.agents/skills/internal/standards-auditor] - Compliance auditor for agents.md standards.
 
 ## 📜 Global Rules
 - **English Only:** All technical interactions and skills.
