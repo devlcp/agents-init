@@ -5,11 +5,13 @@ Manage the project life-cycle: creating skills, auditing quality, and maintainin
 
 ## 🛠️ Operational Protocols
 
-### 1. Build Protocol (The Factory)
-When creating a new skill at `.agents/skills/[category]/[name]/`:
-- **Generate `skill.json`**: Must include a specific `target_dir` (No root access).
-- **Generate `instructions.md`**: Follow the ADRV pattern (Analyze -> Draft -> Refactor -> Validate).
+### 1. Build & Audit Protocol (The Architect)
+When creating a new skill at `.agents/skills/[category]/[name]/`, **ECO_MGR** is the sole responsible for generating the scaffolding AND validating the content:
+- **Scaffolding**: Create the directory, generate `skill.json` and `instructions.md`.
+- **Restrictive Scope**: Every `skill.json` MUST define a specific `target_dir` (No root access).
+- **ADRV Methodology**: Every `instructions.md` MUST include headers for (Analyze -> Draft -> Refactor -> Validate).
 - **Mandatory Section**: Every skill MUST have a `## 🚫 Forbidden Patterns` block.
+- **Audit**: Before confirming the creation, perform a self-audit against these rules.
 
 ### 2. Audit Protocol (The Gatekeeper)
 Before activating any skill, verify:
