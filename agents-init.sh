@@ -43,14 +43,12 @@ ABS_PATH="$(cd "$PROJECT_PATH" && pwd)"
 
 # 2. Inject Base .agents ecosystem
 echo -e "${BLUE}🏗️  Injecting base ecosystem into: $ABS_PATH...${NC}"
-cp -r "$TEMPLATES_ROOT/blueprints/_base/.agents" "$ABS_PATH/"
+# Assumes base-template exists in your agents-init repo
+cp -r "$TEMPLATES_ROOT/common/.agents" "$ABS_PATH/"
 
 # 3. Inject Stack Blueprint (Overlay)
 BLUEPRINT_PATH="$TEMPLATES_ROOT/blueprints/$CATEGORY"
-if [ -d "$BLUEPRINT_PATH/.agents" ]; then
-	echo -e "${BLUE}📁 Applying $CATEGORY blueprint...${NC}"
-	cp -r "$BLUEPRINT_PATH/.agents" "$ABS_PATH/"
-fi
+# Removed dynamic overlay logic as we are reverting to common/
 
 # 4. Dynamic Extraction from master_questions.md
 MASTER_QUESTIONS="$TEMPLATES_ROOT/master_questions.md"
