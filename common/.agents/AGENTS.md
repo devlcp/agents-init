@@ -7,10 +7,15 @@
 3. **Draft:** ADRV pattern (Analyze > Draft > Refactor > Validate).
 4. **Audit:** Self-audit against AGENTS.md before output.
 
+## 🧩 Context & Law
+- **Decisions Log**: [.agents/DECISIONS.md](DECISIONS.md) - Architectural history and "The Why".
+- **Project Status**: [.agents/STATUS.md](STATUS.md) - Current state and immediate roadmap.
+
 ## 🧩 Skills Inventory (Context Map)
 - **ECO_MGR**: [.agents/skills/internal/eco-mgr] - Factory, Auditor & Indexer.
 - **SETUP_WIZARD**: [.agents/skills/internal/setup-wizard] - Project Bootstrapper (Ephemeral).
 - **GIT_FLOW**: [.agents/skills/tools/git-flow] - Git workflow and commit optimizer.
+
 ## 📜 Global Rules
 - **English Only:** All technical interactions and skills.
 - **No Yapping:** Be direct. Code > Explanations.
