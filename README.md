@@ -65,8 +65,12 @@ agents-init ./mi-proyecto-existente --light
 ```
 
 ### 2. Protocolo de Activación
-Al inicializar, el `setup-wizard` te guiará mediante:
-1.  **Language Check:** Elige tu idioma para la mentoría.
-2.  **Discovery Phase:** El agente analiza tu estructura y propone mejoras.
-3.  **Refinement:** Ajustes de configuración específicos.
-4.  **Handoff:** El sistema queda listo bajo control del `@FullstackSenior`.
+Para iniciar la configuración del proyecto y activar la gobernanza, puedes forzar la activación ejecutando:
+
+```bash
+bash ./.agents/activate.sh
+```
+
+O bien, simplemente dile a tu IA: 
+*"Lee el archivo `.agents/skills/internal/setup-wizard/setup.md` y sigue el protocolo definido allí."*
+
