@@ -4,7 +4,6 @@
 | :--- | :--- | :--- |
 | **`agents-init.sh`** | ✅ Completado | Script portátil (Linux/macOS) con soporte para blueprints y validación. |
 | **`agents-skill.sh`** | ✅ Completado | Consolidada en `ECO_MGR` para creación y auditoría automática. |
-| **`Blueprints Architecture`** | ✅ Completado | Estructura modular `blueprints/_base` y overlays por categoría. |
 | **ADRV Pattern** | ✅ Completado | Estandarización de la lógica en todos los archivos `.md`. |
 | **`ECO_MGR` (Master Skill)** | ✅ Completado | Lógica de creación, auditoría e indexación. |
 | **Git Integration** | ⏳ Pendiente | Automatización de commits tras la validación del ciclo ADRV. |
