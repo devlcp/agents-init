@@ -99,4 +99,4 @@ fi
 PROJECT_NAME=$(basename "$ABS_PATH")
 find "$ABS_PATH/.agents/" -maxdepth 1 -name "*.md" -exec $SED_I "s/{{PROJECT_NAME}}/$PROJECT_NAME/g" {} +
 
-echo -e "${GREEN}🚀 System Ready! Open your AI and use the Activation Protocol.${NC}"
+echo -e "${GREEN}🚀 System Ready! To initialize configuration, ask your AI: 'Read .agents/skills/internal/setup-wizard/setup.md and follow the protocol.'${NC}"

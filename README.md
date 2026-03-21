@@ -65,12 +65,7 @@ agents-init ./mi-proyecto-existente --light
 ```
 
 ### 2. Protocolo de Activación
-Para iniciar la configuración del proyecto y activar la gobernanza, puedes forzar la activación ejecutando:
+Para iniciar la configuración del proyecto y activar la gobernanza, dile a tu IA: 
 
-```bash
-bash ./.agents/activate.sh
-```
-
-O bien, simplemente dile a tu IA: 
 *"Lee el archivo `.agents/skills/internal/setup-wizard/setup.md` y sigue el protocolo definido allí."*
 

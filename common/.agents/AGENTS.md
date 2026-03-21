@@ -24,6 +24,5 @@
 
 ## 🤖 For AI Agents (Tooling Integration)
 To initialize this project and load governance:
-1. RUN: `bash .agents/activate.sh`
-2. READ the file: `.agents/skills/internal/setup-wizard/setup.md`
-3. Follow the protocol described in that file.
+1. READ the file: `.agents/skills/internal/setup-wizard/setup.md`
+2. Follow the protocol described in that file.
