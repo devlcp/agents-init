@@ -14,15 +14,27 @@ else
 	SED_I="sed -i"
 fi
 
-if [ $# -eq 1 ]; then
-	# Default to current directory if only category is provided
+# Parse arguments
+LIGHT_MODE=false
+PARAMS=()
+
+for arg in "$@"; do
+	if [[ "$arg" == "--light" ]]; then
+		LIGHT_MODE=true
+	else
+		PARAMS+=("$arg")
+	fi
+done
+
+if [ ${#PARAMS[@]} -eq 0 ]; then
 	PROJECT_PATH="."
-	CATEGORY=$1
-elif [ $# -eq 2 ]; then
-	PROJECT_PATH=$1
-	CATEGORY=$2
+elif [ ${#PARAMS[@]} -eq 1 ]; then
+	PROJECT_PATH="${PARAMS[0]}"
+elif [ ${#PARAMS[@]} -eq 2 ]; then
+	PROJECT_PATH="${PARAMS[0]}"
+	CATEGORY="${PARAMS[1]}"
 else
-	echo -e "${YELLOW}Usage: agents-init [project_path] <category>${NC}"
+	echo -e "${YELLOW}Usage: agents-init [project_path] <category> [--light]${NC}"
 	echo -e "Available Categories: backend, frontend, enterprise, system-tools, custom"
 	exit 1
 fi
@@ -43,34 +55,44 @@ ABS_PATH="$(cd "$PROJECT_PATH" && pwd)"
 
 # 2. Inject Base .agents ecosystem
 echo -e "${BLUE}🏗️  Injecting base ecosystem into: $ABS_PATH...${NC}"
-# Assumes base-template exists in your agents-init repo
 cp -r "$TEMPLATES_ROOT/common/.agents" "$ABS_PATH/"
 
-# 3. Inject Stack Blueprint (Overlay)
-BLUEPRINT_PATH="$TEMPLATES_ROOT/blueprints/$CATEGORY"
-# Removed dynamic overlay logic as we are reverting to common/
-
-# 4. Dynamic Extraction from master_questions.md
-MASTER_QUESTIONS="$TEMPLATES_ROOT/master_questions.md"
-SETUP_WIZARD_MD="$ABS_PATH/.agents/skills/internal/setup-wizard/setup.md"
-
-if [ -f "$MASTER_QUESTIONS" ]; then
-	# Capitalize category for matching (e.g., backend -> Backend)
-	CAT_SEARCH=$(echo "$CATEGORY" | sed 's/./\U&/')
-
-	echo -e "${BLUE}🔍 Extracting Mentor Questions for: $CAT_SEARCH...${NC}"
-
-	# Extract specific section cleanly
-	sed -n "/^## $CAT_SEARCH/,/^##/p" "$MASTER_QUESTIONS" | grep -v "^##" | sed '/^[[:space:]]*$/d' >temp_q.md
-
-	if [ -s temp_q.md ]; then
-		# Inject into the setup skill
-		$SED_I "/### 2. Stack Specifics/r temp_q.md" "$SETUP_WIZARD_MD"
-		echo -e "${GREEN}✅ Questions for $CAT_SEARCH injected into Setup Wizard.${NC}"
-	else
-		echo -e "${YELLOW}⚠️  No specific questions found for category '$CATEGORY'.${NC}"
+# 3. Inject Stack Blueprint (Overlay) - Skip if in Light Mode
+if [ "$LIGHT_MODE" = false ]; then
+	if [ -n "$CATEGORY" ]; then
+		BLUEPRINT_PATH="$TEMPLATES_ROOT/blueprints/$CATEGORY"
+		if [ -d "$BLUEPRINT_PATH" ]; then
+			echo -e "${BLUE}🎨 Applying $CATEGORY blueprint...${NC}"
+			# Add overlay logic here if needed
+		else
+			echo -e "${YELLOW}⚠️  Blueprint '$CATEGORY' not found. Skipping.${NC}"
+		fi
 	fi
-	rm temp_q.md
+fi
+
+# 4. Dynamic Extraction from master_questions.md - Skip if in Light Mode
+if [ "$LIGHT_MODE" = false ] && [ -n "$CATEGORY" ]; then
+	MASTER_QUESTIONS="$TEMPLATES_ROOT/master_questions.md"
+	SETUP_WIZARD_MD="$ABS_PATH/.agents/skills/internal/setup-wizard/setup.md"
+
+	if [ -f "$MASTER_QUESTIONS" ]; then
+		# Capitalize category for matching (e.g., backend -> Backend)
+		CAT_SEARCH=$(echo "$CATEGORY" | sed 's/./\U&/')
+
+		echo -e "${BLUE}🔍 Extracting Mentor Questions for: $CAT_SEARCH...${NC}"
+
+		# Extract specific section cleanly
+		sed -n "/^## $CAT_SEARCH/,/^##/p" "$MASTER_QUESTIONS" | grep -v "^##" | sed '/^[[:space:]]*$/d' >temp_q.md
+
+		if [ -s temp_q.md ]; then
+			# Inject into the setup skill
+			$SED_I "/### 2. Stack Specifics/r temp_q.md" "$SETUP_WIZARD_MD"
+			echo -e "${GREEN}✅ Questions for $CAT_SEARCH injected into Setup Wizard.${NC}"
+		else
+			echo -e "${YELLOW}⚠️  No specific questions found for category '$CATEGORY'.${NC}"
+		fi
+		rm temp_q.md
+	fi
 fi
 
 # 5. Personalize AGENTS.md
